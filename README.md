@@ -3,6 +3,8 @@
 Adds a simple "Share to StatusNet" link to your [shaarli](http://sebsauvage.net/wiki/doku.php?id=php:shaarli) 0.0.37beta installation.  
 It opens a new tab/window with a pre-populated "bookmark" type of notice.
 
+![Screenshot](http://chromic.org/images/shaarli.png)
+
 # Install
 
 1. Backup your original **/tpl/linklist.html** in case things go wrong.
