@@ -43,7 +43,8 @@
                     <span class="linkdate" title="Short link here"><a href="?{$value.linkdate|smallHash}">permalink</a> - </span>
                 {/if}
                 <div style="position:relative;display:inline;"><a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" onclick="return false;" class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a></div> - 
-		<span class="linkurl" title="Short link">{$value.url|htmlspecialchars}</span> - <a href="#" onclick="shareSN('{$value.url}', '{$value.title}', '{$value.description}', '{$value.tags}');">Share on StatusNet</a><br>
+		<span class="linkurl" title="Short link">{$value.url|htmlspecialchars}</span> - <a href="#" onclick="shareSN(&quot;{$value.url}&quot;, &quot;{$value.title|htmlspecialchars:ENT_QUOTES}&quot;, &quot;{$value.description|htmlspecialchars:ENT_QUOTES}&quot;, &quot;{$value.tags|htmlspecialchars:ENT_QUOTES}&quot;);">Share on StatusNet</a><br>
+
                 {if="$value.tags"}
                     <div class="linktaglist">
                     {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> {/loop}
@@ -69,7 +70,13 @@ $(document).ready(function() {
 });
 function hide_qrcode() { $('div.qrcode').remove(); }
 function shareSN(url, title, desc, tags) {
-    var sn = "http://identi.ca/main/bookmark/new?url=" + encodeURI(url) +
+    // Convert HTML entities back to symbols.
+    url = $('<div />').html(url).text();
+    title = $('<div />').html(title).text();
+    desc = $('<div />').html(desc).text();
+    tags = $('<div />').html(tags).text();
+
+    var sn = "http://sn.chromic.org/main/bookmark/new?url=" + encodeURI(url) +
              "&title=" + encodeURIComponent(title) +
 	     "&description=" + encodeURIComponent(desc) +
              "&tags=" + encodeURIComponent(tags);
