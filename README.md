@@ -1,3 +1,7 @@
+# Note
+
+I'm done with this. If someone wants to maintain it send me a note and I'll transfer the repo. Or just fork it, or whatever.
+
 # Intro
 
 Adds a simple "Share to StatusNet" link to your [shaarli](http://sebsauvage.net/wiki/doku.php?id=php:shaarli) 0.0.37beta installation.  
